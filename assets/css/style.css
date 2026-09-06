@@ -198,6 +198,24 @@ strong { color: var(--ink); font-weight: 600; }
 /* Intro copy that reads as body text under a page header, on the content side
    of the hero's dividing line rather than inside the header band. */
 .page-intro { max-width: var(--measure); margin-bottom: clamp(30px, 3.6vw, 48px); }
+/* Variant that parks the company mark in the empty space to the right of the
+   intro copy, above the form card. Sized to sit just under the height of the
+   text beside it so it fills the gap without becoming the loudest thing on
+   the page; it drops away entirely once the layout goes single column. */
+.page-intro-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(28px, 5vw, 72px);
+  align-items: center;
+  max-width: none;
+}
+.page-intro-split > div { max-width: var(--measure); }
+.page-intro-mark {
+  width: clamp(110px, 14vw, 172px);
+  height: auto;
+  justify-self: end;
+}
+@media (max-width: 760px) { .page-intro-mark { display: none; } }
 .page-intro .lead-line {
   margin-bottom: .5em;
   font-size: clamp(1.15rem, 1.05rem + .4vw, 1.4rem);

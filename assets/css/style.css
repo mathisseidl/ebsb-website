@@ -903,7 +903,7 @@ strong { color: var(--ink); font-weight: 600; }
    .78rem every checklist entry fits on one line. */
 .person-featured {
   display: grid;
-  grid-template-columns: clamp(240px, 29vw, 350px) minmax(0, 1fr) minmax(0, 1.05fr);
+  grid-template-columns: clamp(230px, 25vw, 300px) minmax(0, 1fr) minmax(0, 1.05fr);
   gap: 0;
   align-items: stretch;
   padding: 0;
@@ -926,11 +926,12 @@ strong { color: var(--ink); font-weight: 600; }
 .person-featured-main { padding: clamp(20px, 2.2vw, 26px) 0 clamp(20px, 2.2vw, 26px) clamp(20px, 2.2vw, 26px); }
 .person-featured h3 { font-size: clamp(1.4rem, 1.2rem + .8vw, 1.85rem); margin-bottom: .15em; }
 .person-featured .role { color: var(--blue-dk); font-weight: 600; margin-bottom: 1.3em; }
-/* A step down from the standard checklist so each entry stays on one line
-   inside the middle column. */
-.person-featured .checklist { gap: 8px; font-size: .78rem; }
-.person-featured .checklist li { padding-left: 25px; }
-.person-featured .checklist li::before { top: .25em; width: 16px; height: 16px; background-size: 9px; }
+/* Same size as the checklists in the team grid below (.checklist.tight), so
+   Bernhard's entries do not read smaller than everyone else's. The middle
+   column is wide enough at this size for every entry to stay on one line. */
+.person-featured .checklist { gap: 9px; font-size: .9rem; }
+.person-featured .checklist li { padding-left: 26px; }
+.person-featured .checklist li::before { top: .3em; width: 16px; height: 16px; background-size: 9px; }
 /* Set in a tinted box and a step down in size, so the biography reads as an
    aside rather than competing with the name beside it. */
 .person-bio {
@@ -942,8 +943,8 @@ strong { color: var(--ink); font-weight: 600; }
 }
 .person-bio p {
   margin: 0;
-  font-size: .8rem;
-  line-height: 1.4;
+  font-size: .86rem;
+  line-height: 1.45;
   color: var(--ink-soft);
 }
 /* Two columns: the portrait spans both text rows so it stays flush top to

@@ -409,25 +409,16 @@ strong { color: var(--ink); font-weight: 600; }
   .main-nav ul { flex-direction: column; align-items: stretch; gap: 2px; }
   .main-nav a { padding: 13px 12px; font-size: 1.05rem; }
   .main-nav a[aria-current="page"]::after { display: none; }
-  .main-nav a[aria-current="page"] { background: var(--blue-soft); }
+  /* Die aktive Seite bekommt am Telefon keine Flaeche - der blaue Block war
+     schwerer als der Rest des schlanken Panels. */
+  .main-nav a[aria-current="page"] { background: none; font-weight: 700; }
   .main-nav .caret { display: none; }
-  .main-nav .subnav {
-    position: static;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    min-width: 0;
-    margin: 2px 0 6px 13px;
-    padding: 0 0 0 13px;
-    background: none;
-    border: 0;
-    border-left: 2px solid var(--border);
-    border-radius: 0;
-    box-shadow: none;
-  }
-  .main-nav .subnav a { padding: 11px 12px; font-size: .98rem; }
-  .main-nav .nav-cta { display: block; margin-top: 14px; }
-  .main-nav .nav-cta .btn { width: 100%; }
+  /* Startseite/Privatkunden kosteten zwei zusaetzliche Zeilen; "Home" fuehrt
+     ohnehin dorthin, der Service-Abschnitt ist von dort aus verlinkt. */
+  .main-nav .subnav { display: none; }
+  /* Der Knopf steht schon im Kopf jeder Seite und im Fuss - am Telefon
+     verlaengert er das Panel nur. */
+  .main-nav .nav-cta { display: none; }
 }
 
 /* ==========================================================================
@@ -498,7 +489,8 @@ strong { color: var(--ink); font-weight: 600; }
 .page-hero {
   position: relative;
   overflow: hidden;
-  padding: clamp(34px, 3.6vw, 52px) 0 clamp(22px, 2.2vw, 30px);
+  /* gleiche Polsterung oben wie unten, damit der Titel im Band mittig sitzt */
+  padding: clamp(26px, 2.6vw, 34px) 0;
   background:
     radial-gradient(880px 380px at 92% -30%, var(--blue-soft) 0%, transparent 62%),
     radial-gradient(560px 300px at 2% 0%, var(--amber-soft) 0%, transparent 60%),
@@ -888,39 +880,46 @@ strong { color: var(--ink); font-weight: 600; }
 /* ==========================================================================
    Team
    ========================================================================== */
-/* The portrait column is sized to land close to a card in the team grid below
-   (three columns of minmax(268px, 1fr) ≈ 365px at full width), so Bernhard's
-   photo reads at the same size as everyone else's.
-   The 1.08fr on the biography is measured, not guessed: at that width the
-   paragraph wraps to 15 lines and its box ends level with the bottom edge of
-   the portrait. It costs the longest checklist entry a second line, which the
-   middle column has room for — it runs some 60px shorter than the photo. */
+/* Bernhard's portrait sits flush in the card - no padding around it, the way
+   the photos in the team grid below fill their cards edge to edge. The card
+   carries no padding of its own; the two text columns bring their own, and the
+   portrait stretches to whatever height they set. Measured against the real
+   Inter metrics at 1200px: the card comes to ~338px instead of ~420px, and at
+   .78rem every checklist entry fits on one line. */
 .person-featured {
   display: grid;
-  grid-template-columns: clamp(260px, 29vw, 350px) minmax(0, 1fr) minmax(0, 1.08fr);
-  gap: clamp(24px, 3.2vw, 44px);
-  align-items: start;
-  padding: clamp(24px, 3vw, 40px);
+  grid-template-columns: clamp(240px, 29vw, 350px) minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: 0;
+  align-items: stretch;
+  padding: 0;
   margin-bottom: clamp(28px, 3.4vw, 44px);
+  overflow: hidden;
   background: #fff;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
-.person-featured .portrait { border-radius: var(--radius); overflow: hidden; aspect-ratio: 1; background: var(--bg-alt); margin-top: .3em; }
+.person-featured .portrait {
+  margin: 0;
+  border-radius: 0;
+  aspect-ratio: auto;
+  overflow: hidden;
+  background: var(--bg-alt);
+}
+.person-featured .portrait picture { display: block; height: 100%; }
 .person-featured .portrait img { width: 100%; height: 100%; object-fit: cover; }
+.person-featured-main { padding: clamp(20px, 2.2vw, 26px) 0 clamp(20px, 2.2vw, 26px) clamp(20px, 2.2vw, 26px); }
 .person-featured h3 { font-size: clamp(1.4rem, 1.2rem + .8vw, 1.85rem); margin-bottom: .15em; }
 .person-featured .role { color: var(--blue-dk); font-weight: 600; margin-bottom: 1.3em; }
-/* This list is squeezed into the middle column, between the portrait on the
-   left and the biography on the right, so it is set a step down from the
-   standard checklist to keep the entries compact. */
-.person-featured .checklist { gap: 8px; font-size: .82rem; }
+/* A step down from the standard checklist so each entry stays on one line
+   inside the middle column. */
+.person-featured .checklist { gap: 8px; font-size: .78rem; }
 .person-featured .checklist li { padding-left: 25px; }
 .person-featured .checklist li::before { top: .25em; width: 16px; height: 16px; background-size: 9px; }
 /* Set in a tinted box and a step down in size, so the biography reads as an
-   aside and stays no taller than the name-to-"MBA (UCLA)" column beside it. */
+   aside rather than competing with the name beside it. */
 .person-bio {
-  margin-left: clamp(4px, .9vw, 18px);
+  margin: clamp(20px, 2.2vw, 26px);
   padding: clamp(16px, 1.6vw, 22px);
   background: var(--bg-alt);
   border: 1px solid var(--border-soft);
@@ -929,16 +928,21 @@ strong { color: var(--ink); font-weight: 600; }
 .person-bio p {
   margin: 0;
   font-size: .8rem;
-  line-height: 1.5;
+  line-height: 1.4;
   color: var(--ink-soft);
 }
+/* Two columns: the portrait spans both text rows so it stays flush top to
+   bottom, with the biography tucked under the name. */
 @media (max-width: 1160px) {
-  .person-featured { grid-template-columns: clamp(240px, 30vw, 320px) minmax(0, 1fr); }
-  .person-bio { grid-column: 1 / -1; margin-left: 0; }
+  .person-featured { grid-template-columns: clamp(200px, 26vw, 290px) minmax(0, 1fr); }
+  .person-featured .portrait { grid-row: 1 / -1; }
+  .person-bio { grid-column: 2; margin-top: 0; }
 }
 @media (max-width: 760px) {
   .person-featured { grid-template-columns: 1fr; }
-  .person-featured .portrait { max-width: 230px; }
+  .person-featured .portrait { grid-row: auto; aspect-ratio: 4 / 3; }
+  .person-featured-main { padding: clamp(20px, 2.2vw, 26px) clamp(20px, 2.2vw, 26px) 0; }
+  .person-bio { grid-column: 1; margin-top: clamp(16px, 2vw, 22px); }
 }
 
 .team-grid {

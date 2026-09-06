@@ -156,6 +156,55 @@ strong { color: var(--ink); font-weight: 600; }
 }
 .section-head.center .eyebrow { justify-content: center; }
 
+/* Section titles: the amber rule and the section's own name, nothing else.
+   Every page title on the site uses this one rule, so the bar, the type and
+   the position of the title are identical wherever it appears. The only
+   deliberate exception is the Privatkunden title on the start page, which
+   sits inside a content section rather than in a page header band. */
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  font-family: var(--font-head);
+  font-size: clamp(1.25rem, 1.08rem + .6vw, 1.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.section-title::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 30px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--amber);
+}
+.section-head.center .section-title { justify-content: center; }
+
+/* An illustration that belongs to a section rather than to its title. Parking
+   it beside the title would force that header band taller than every other
+   page's, so it is centred under the section's content instead — free to be
+   as large as it likes without touching the shared title bar. */
+.section-figure {
+  display: grid;
+  place-items: center;
+  margin-top: clamp(28px, 3.4vw, 48px);
+}
+.section-figure img { width: clamp(190px, 28vw, 330px); height: auto; }
+
+/* Intro copy that reads as body text under a page header, on the content side
+   of the hero's dividing line rather than inside the header band. */
+.page-intro { max-width: var(--measure); margin-bottom: clamp(30px, 3.6vw, 48px); }
+.page-intro .lead-line {
+  margin-bottom: .5em;
+  font-size: clamp(1.15rem, 1.05rem + .4vw, 1.4rem);
+  font-weight: 600;
+  color: var(--ink);
+}
+
 .lede { font-size: 1.1875rem; color: var(--ink-soft); max-width: var(--measure); }
 
 /* ==========================================================================
@@ -276,6 +325,46 @@ strong { color: var(--ink); font-weight: 600; }
 /* The in-nav CTA is the mobile-panel copy; the desktop one lives in .header-cta */
 .main-nav .nav-cta { display: none; }
 
+/* Dropdown (Home). Reines CSS: :hover fuer die Maus, :focus-within fuer die
+   Tastatur - deshalb braucht das Menue kein JavaScript. */
+.main-nav .has-sub { position: relative; }
+.main-nav .has-sub > a { display: flex; align-items: center; gap: 7px; }
+.main-nav .caret {
+  width: 6px; height: 6px;
+  border-right: 1.6px solid currentColor;
+  border-bottom: 1.6px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform .18s ease;
+}
+.main-nav .has-sub:hover > a .caret,
+.main-nav .has-sub:focus-within > a .caret { transform: translateY(1px) rotate(225deg); }
+.main-nav .subnav {
+  position: absolute;
+  top: 100%; left: 0;
+  z-index: 30;
+  min-width: 196px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 2px;
+  padding: 6px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity .16s ease, transform .16s ease, visibility .16s;
+}
+.main-nav .has-sub:hover > .subnav,
+.main-nav .has-sub:focus-within > .subnav {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+.main-nav .subnav a { padding: 9px 11px; font-size: .92rem; white-space: nowrap; }
+.main-nav .subnav a[aria-current="page"]::after { display: none; }
+
 .nav-toggle {
   display: none;
   margin-left: auto;
@@ -321,6 +410,22 @@ strong { color: var(--ink); font-weight: 600; }
   .main-nav a { padding: 13px 12px; font-size: 1.05rem; }
   .main-nav a[aria-current="page"]::after { display: none; }
   .main-nav a[aria-current="page"] { background: var(--blue-soft); }
+  .main-nav .caret { display: none; }
+  .main-nav .subnav {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    min-width: 0;
+    margin: 2px 0 6px 13px;
+    padding: 0 0 0 13px;
+    background: none;
+    border: 0;
+    border-left: 2px solid var(--border);
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .main-nav .subnav a { padding: 11px 12px; font-size: .98rem; }
   .main-nav .nav-cta { display: block; margin-top: 14px; }
   .main-nav .nav-cta .btn { width: 100%; }
 }
@@ -393,60 +498,120 @@ strong { color: var(--ink); font-weight: 600; }
 .page-hero {
   position: relative;
   overflow: hidden;
-  padding: clamp(44px, 5.5vw, 78px) 0 clamp(36px, 4.5vw, 60px);
+  padding: clamp(34px, 3.6vw, 52px) 0 clamp(22px, 2.2vw, 30px);
   background:
     radial-gradient(880px 380px at 92% -30%, var(--blue-soft) 0%, transparent 62%),
     radial-gradient(560px 300px at 2% 0%, var(--amber-soft) 0%, transparent 60%),
     var(--bg);
   border-bottom: 1px solid var(--border);
 }
-.page-hero h1 { font-size: clamp(2rem, 1.4rem + 2.6vw, 3.1rem); margin-bottom: .3em; }
+.page-hero h1:not(.section-title) { font-size: clamp(2rem, 1.4rem + 2.6vw, 3.1rem); margin-bottom: .3em; }
 .page-hero .lede { font-size: clamp(1.0625rem, 1rem + .35vw, 1.25rem); }
+/* A section opening straight under the header band does not need the full
+   between-sections gap on top of the band's own padding — the two together
+   left an empty strip taller than the title itself. */
+.page-hero + .section { padding-top: clamp(28px, 3vw, 44px); }
 
 /* ==========================================================================
    Trust bar
    ========================================================================== */
-.trustbar { border-bottom: 1px solid var(--border); background: var(--bg-alt); }
-.trustbar-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--border);
-}
-.trustbar-item {
-  padding: clamp(24px, 3vw, 36px) clamp(16px, 2.4vw, 30px);
+/* Three facts, built from the same white-card idiom as the rest of the site
+   (border + radius + soft shadow) so the band stops reading as a stray strip. */
+.trustbar {
+  padding: clamp(38px, 4.6vw, 64px) 0;
   background: var(--bg-alt);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: clamp(18px, 2.2vw, 28px);
+}
+.stat {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 7px;
+  padding: clamp(26px, 3vw, 38px) clamp(20px, 2.4vw, 30px);
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
   text-align: center;
 }
-.trustbar-item .num {
-  display: block;
+.stat-ico {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 6px;
+  border-radius: 14px;
+  background: var(--blue-soft);
+  color: var(--blue-dk);
+}
+.stat-ico svg { width: 22px; height: 22px; }
+/* the Google mark is multicolour, so it gets a plain plate instead of the tint */
+.stat-ico-plain { background: #fff; border: 1px solid var(--border); }
+.stat-ico-plain img { width: 22px; height: 22px; }
+.stat-num {
   font-family: var(--font-head);
-  font-size: clamp(1.75rem, 1.2rem + 1.8vw, 2.4rem);
+  font-size: clamp(1.7rem, 1.2rem + 1.7vw, 2.35rem);
   font-weight: 800;
   line-height: 1.05;
-  color: var(--ink);
   letter-spacing: -.03em;
+  color: var(--ink);
 }
-.trustbar-item .num small { font-size: .5em; font-weight: 700; color: var(--muted); }
-.trustbar-item p { margin: 9px 0 0; font-size: .9375rem; color: var(--muted); }
-.trustbar-item .stars { color: var(--amber); letter-spacing: 2px; }
-.trustbar-item .google {
-  display: inline-flex; align-items: center; gap: 8px;
-  margin-top: 9px; font-size: .9375rem; color: var(--muted);
-}
-.trustbar-item .google img { width: 15px; }
+.stat-stars { color: var(--amber); letter-spacing: 3px; font-size: .95rem; line-height: 1; }
+.stat-label { max-width: 31ch; font-size: .9375rem; color: var(--muted); }
 
-.trustbar-note {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 22px 0 26px;
-  font-size: .9375rem;
-  color: var(--muted);
-  text-align: center;
+/* ==========================================================================
+   Kundenlogos - laufendes Band
+   ========================================================================== */
+.logo-river {
+  padding: clamp(30px, 3.6vw, 48px) 0 clamp(32px, 3.8vw, 52px);
+  background: var(--bg);
+}
+.logo-river .eyebrow { display: flex; justify-content: center; margin-bottom: 22px; }
+/* A hairline above and below the moving row, full-bleed like the reference. */
+.logo-river-rail {
+  padding: clamp(20px, 2.4vw, 32px) 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+/* The fade lives on the inner element so it never eats into those rules. */
+.logo-river-mask {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+}
+.logo-river-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: logo-river 62s linear infinite;
+}
+/* The list is duplicated once, so -50% is exactly one full set. */
+@keyframes logo-river { to { transform: translateX(-50%); } }
+.logo-river:hover .logo-river-track,
+.logo-river:focus-within .logo-river-track { animation-play-state: paused; }
+.logo-river-track li {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: clamp(200px, 21vw, 280px);
+  padding: 0 clamp(20px, 2.6vw, 40px);
+}
+.logo-river-track img {
+  max-width: 100%;
+  max-height: 40px;
+  width: auto;
+  object-fit: contain;
 }
 
-@media (max-width: 760px) {
-  .trustbar-grid { grid-template-columns: 1fr; }
+@media (prefers-reduced-motion: reduce) {
+  .logo-river-track { animation: none; }
+  .logo-river-mask { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
 }
 
 /* ==========================================================================
@@ -454,8 +619,8 @@ strong { color: var(--ink); font-weight: 600; }
    ========================================================================== */
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: clamp(20px, 2.4vw, 28px);
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: clamp(24px, 2.6vw, 34px);
   align-items: stretch;
 }
 
@@ -471,20 +636,48 @@ strong { color: var(--ink); font-weight: 600; }
 }
 .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: #d7e0ea; }
 
+/* Every service image is normalised to 800x1067 (see scripts/fetch-assets.py),
+   so a 3:4 box is an exact fit: each photo fills its card edge to edge and all
+   six render at precisely the same size. */
 .card-media {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
   background: var(--bg-alt);
   border-bottom: 1px solid var(--border-soft);
 }
-.card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
-.card:hover .card-media img { transform: scale(1.04); }
+.card-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+.card:hover .card-media img { transform: scale(1.03); }
 
-.card-body { display: flex; flex-direction: column; flex: 1; padding: clamp(22px, 2.4vw, 30px); }
-.card-body > h3 { margin-bottom: .3em; }
-.card-tagline { color: var(--blue-dk); font-weight: 500; font-size: .96rem; margin-bottom: 1.15em; }
-.card-body .btn { margin-top: 24px; align-self: flex-start; }
+.card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: clamp(26px, 2.6vw, 34px);
+}
+.card-body > h3 { margin-bottom: .28em; font-size: clamp(1.2rem, 1.04rem + .5vw, 1.45rem); }
+.card-tagline { color: var(--blue-dk); font-weight: 700; font-size: 1rem; margin-bottom: 1.3em; }
+.card-body .checklist { margin-bottom: 28px; }
+/* margin-top:auto pins the CTA to the bottom edge, so the buttons sit on one
+   line across all three cards however long the checklist is. */
+.card-body .btn { margin-top: auto; align-self: flex-start; }
+
+/* On the B2B page the three headings and taglines run to different lengths
+   ("Energiewirtschaftliche Beratung" wraps, "Elektromobilität" does not), so
+   each checklist used to start at its own height. Reserving two heading lines
+   and three tagline lines puts the first bullet of all three cards on one
+   line. Only needed while the cards sit side by side — below that they are a
+   single column and there is nothing to line up. */
+@media (min-width: 742px) {
+  .cards-even .card-body > h3 { min-height: 2.3em; }
+  .cards-even .card-tagline { min-height: 4.95em; }
+}
 
 /* Checklists — replaces the bullet-point PNG the Wix site repeated 12x */
 .checklist { display: grid; gap: 11px; font-size: .96rem; }
@@ -500,6 +693,7 @@ strong { color: var(--ink); font-weight: 600; }
 .checklist.tight { gap: 9px; font-size: .9rem; }
 .checklist.tight li { padding-left: 26px; }
 .checklist.tight li::before { width: 16px; height: 16px; background-size: 9px; }
+.checklist b { font-weight: 700; color: var(--ink); }
 
 /* ==========================================================================
    Steps
@@ -670,11 +864,18 @@ strong { color: var(--ink); font-weight: 600; }
 /* ==========================================================================
    Team
    ========================================================================== */
+/* The portrait column is sized to land close to a card in the team grid below
+   (three columns of minmax(268px, 1fr) ≈ 365px at full width), so Bernhard's
+   photo reads at the same size as everyone else's.
+   The 1.08fr on the biography is measured, not guessed: at that width the
+   paragraph wraps to 15 lines and its box ends level with the bottom edge of
+   the portrait. It costs the longest checklist entry a second line, which the
+   middle column has room for — it runs some 60px shorter than the photo. */
 .person-featured {
   display: grid;
-  grid-template-columns: 300px minmax(0, 1fr);
-  gap: clamp(28px, 4vw, 56px);
-  align-items: center;
+  grid-template-columns: clamp(260px, 29vw, 350px) minmax(0, 1fr) minmax(0, 1.08fr);
+  gap: clamp(24px, 3.2vw, 44px);
+  align-items: start;
   padding: clamp(24px, 3vw, 40px);
   margin-bottom: clamp(28px, 3.4vw, 44px);
   background: #fff;
@@ -682,10 +883,35 @@ strong { color: var(--ink); font-weight: 600; }
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
-.person-featured .portrait { border-radius: var(--radius); overflow: hidden; aspect-ratio: 1; background: var(--bg-alt); }
+.person-featured .portrait { border-radius: var(--radius); overflow: hidden; aspect-ratio: 1; background: var(--bg-alt); margin-top: .3em; }
 .person-featured .portrait img { width: 100%; height: 100%; object-fit: cover; }
 .person-featured h3 { font-size: clamp(1.4rem, 1.2rem + .8vw, 1.85rem); margin-bottom: .15em; }
 .person-featured .role { color: var(--blue-dk); font-weight: 600; margin-bottom: 1.3em; }
+/* This list is squeezed into the middle column, between the portrait on the
+   left and the biography on the right, so it is set a step down from the
+   standard checklist to keep the entries compact. */
+.person-featured .checklist { gap: 8px; font-size: .82rem; }
+.person-featured .checklist li { padding-left: 25px; }
+.person-featured .checklist li::before { top: .25em; width: 16px; height: 16px; background-size: 9px; }
+/* Set in a tinted box and a step down in size, so the biography reads as an
+   aside and stays no taller than the name-to-"MBA (UCLA)" column beside it. */
+.person-bio {
+  margin-left: clamp(4px, .9vw, 18px);
+  padding: clamp(16px, 1.6vw, 22px);
+  background: var(--bg-alt);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+}
+.person-bio p {
+  margin: 0;
+  font-size: .8rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+@media (max-width: 1160px) {
+  .person-featured { grid-template-columns: clamp(240px, 30vw, 320px) minmax(0, 1fr); }
+  .person-bio { grid-column: 1 / -1; margin-left: 0; }
+}
 @media (max-width: 760px) {
   .person-featured { grid-template-columns: 1fr; }
   .person-featured .portrait { max-width: 230px; }
@@ -736,11 +962,19 @@ strong { color: var(--ink); font-weight: 600; }
 .partner-gallery {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1.35fr 1fr;
-  gap: 8px;
-  background: none;
+  grid-template-rows: auto auto;
+  gap: 10px;
+  padding: clamp(10px, 1.2vw, 16px);
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
   overflow: visible;
+  /* rows size themselves from the cells below, so drop the 4:3 cage */
+  aspect-ratio: auto;
 }
+/* The cells carry the photos' real proportions - 4:3 for the slope shot,
+   3:4 for the two portraits - so nothing is cropped away. */
+.partner-gallery picture:first-child { aspect-ratio: 4 / 3; }
+.partner-gallery picture:nth-child(n+2) { aspect-ratio: 3 / 4; }
 .partner-gallery picture { display: block; overflow: hidden; border-radius: var(--radius-sm); background: var(--bg-alt); }
 .partner-gallery picture:first-child { grid-column: 1 / -1; }
 .partner-gallery img { width: 100%; height: 100%; object-fit: cover; }
@@ -749,10 +983,18 @@ strong { color: var(--ink); font-weight: 600; }
 .partner-figure.logo-panel {
   display: grid;
   place-items: center;
-  padding: 12%;
+  padding: 0;
   border: 1px solid var(--border);
 }
-.partner-figure.logo-panel img { width: auto; max-width: 100%; max-height: 100%; height: auto; object-fit: contain; }
+/* Capping both axes keeps a square logo and a wide one at a comparable
+   optical size, each centred with room to breathe on every side. */
+.partner-figure.logo-panel img {
+  width: auto;
+  height: auto;
+  max-width: 66%;
+  max-height: 62%;
+  object-fit: contain;
+}
 .partner-logo {
   height: 68px;
   width: auto;
@@ -1021,6 +1263,7 @@ button[disabled]:hover { transform: none; }
   color: rgba(255,255,255,.5);
 }
 .footer-bottom ul { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-left: auto; }
+.footer-bottom a { text-decoration: underline; text-underline-offset: 3px; }
 
 .social { display: inline-flex; align-items: center; gap: 9px; }
 .social svg { width: 18px; height: 18px; flex-shrink: 0; }

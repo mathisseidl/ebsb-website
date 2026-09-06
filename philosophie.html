@@ -30,14 +30,20 @@
     <a class="brand" href="/" aria-label="EBSB GmbH — Startseite">
       <img class="brand-mark" src="assets/img/logo-mark.png" alt="" width="42" height="30" />
       <img class="brand-word" src="assets/img/logo-wordmark.png" alt="EBSB" width="74" height="17" />
-      <span class="brand-sub">Ihre Energieberatung in München und Südbayern</span>
+      <span class="brand-sub">Energieberatung Südbayern</span>
     </a>
     <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="primary-nav">
       <span></span><span></span><span></span>
     </button>
     <nav class="main-nav" id="primary-nav" aria-label="Hauptnavigation">
       <ul>
-        <li><a href="/">Home</a></li>
+        <li class="has-sub">
+          <a href="/">Home <span class="caret" aria-hidden="true"></span></a>
+          <ul class="subnav">
+            <li><a href="/">Startseite</a></li>
+            <li><a href="/#service">Privatkunden</a></li>
+          </ul>
+        </li>
         <li><a href="b2b.html">Geschäftskunden</a></li>
         <li><a href="team.html">Team</a></li>
         <li><a href="philosophie.html" aria-current="page">Philosophie</a></li>
@@ -56,8 +62,7 @@
 
   <section class="page-hero">
     <div class="container">
-      <p class="eyebrow">Unsere Philosophie</p>
-      <h1>Nachhaltigkeit ist unser Leitprinzip</h1>
+      <h1 class="section-title">Unsere Philosophie</h1>
     </div>
   </section>
 
@@ -98,6 +103,10 @@
           <p>Unser Erfolg beruht auf Wissen, Innovationskraft und Zusammenarbeit. Indem wir kontinuierlich wachsen, uns weiterentwickeln und neue Wege gehen, bleiben wir ein verlässlicher Partner auf dem Weg zu einer nachhaltigeren Zukunft.</p>
         </article>
 
+      </div>
+
+      <div class="section-figure reveal">
+        <img src="assets/img/philosophie-illustration.svg" alt="" width="500" height="375" loading="lazy" />
       </div>
     </div>
   </section>

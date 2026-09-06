@@ -30,14 +30,20 @@
     <a class="brand" href="/" aria-label="EBSB GmbH — Startseite">
       <img class="brand-mark" src="assets/img/logo-mark.png" alt="" width="42" height="30" />
       <img class="brand-word" src="assets/img/logo-wordmark.png" alt="EBSB" width="74" height="17" />
-      <span class="brand-sub">Ihre Energieberatung in München und Südbayern</span>
+      <span class="brand-sub">Energieberatung Südbayern</span>
     </a>
     <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="primary-nav">
       <span></span><span></span><span></span>
     </button>
     <nav class="main-nav" id="primary-nav" aria-label="Hauptnavigation">
       <ul>
-        <li><a href="/">Home</a></li>
+        <li class="has-sub">
+          <a href="/">Home <span class="caret" aria-hidden="true"></span></a>
+          <ul class="subnav">
+            <li><a href="/">Startseite</a></li>
+            <li><a href="/#service">Privatkunden</a></li>
+          </ul>
+        </li>
         <li><a href="b2b.html">Geschäftskunden</a></li>
         <li><a href="team.html">Team</a></li>
         <li><a href="philosophie.html">Philosophie</a></li>
@@ -56,14 +62,17 @@
 
   <section class="page-hero">
     <div class="container">
-      <p class="eyebrow">Kontakt</p>
-      <h1>Wir freuen uns auf Ihre Nachricht</h1>
-      <p class="lede">Sie haben Fragen, Wünsche oder benötigen weitere Hilfe bezüglich Ihres Anliegens? Zögern Sie nicht uns zu kontaktieren. Unser Team wird sich schnellstmöglich bei Ihnen melden.</p>
+      <h1 class="section-title">Kontakt</h1>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
+      <div class="page-intro">
+        <p class="lead-line">Wir freuen uns auf Ihre Nachricht</p>
+        <p>Sie haben Fragen, Wünsche oder benötigen weitere Hilfe bezüglich Ihres Anliegens? Zögern Sie nicht uns zu kontaktieren. Unser Team wird sich schnellstmöglich bei Ihnen melden.</p>
+      </div>
+
       <div class="contact-grid">
 
         <div>
@@ -113,10 +122,14 @@
 
         <div class="form-card">
           <form id="kontakt-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
-            <!-- Web3Forms: der Access Key wird in assets/js/main.js gesetzt und hier gespiegelt. -->
-            <input type="hidden" name="access_key" value="REPLACE_WITH_YOUR_WEB3FORMS_ACCESS_KEY" />
+            <!-- Web3Forms: der Access Key wird in assets/js/main.js gesetzt und hier
+                 gespiegelt (er ist oeffentlich und darf im Quelltext stehen). Das
+                 Ziel-Postfach haengt am Key im Web3Forms-Konto: info@ebsb.de. -->
+            <input type="hidden" name="access_key" value="9e0b6098-4732-4817-a9fd-0e63d7c53ee9" />
             <input type="hidden" name="subject" value="Neue Anfrage über ebsb.de" />
             <input type="hidden" name="from_name" value="ebsb.de" />
+            <!-- Antworten gehen direkt an den Absender statt an ebsb.de. -->
+            <input type="hidden" name="replyto" value="Email" />
 
             <div class="hp" aria-hidden="true">
               <label for="botcheck">Bitte dieses Feld leer lassen</label>

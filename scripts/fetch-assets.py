@@ -19,7 +19,9 @@ SHOTS = {
     "service-energie":      ("eb1f19_3958765ffbff4ee8abbc70c47a66c04d~mv2.png", None, 900),
     "b2b-energiewirtschaft":                ("eb1f19_34a2b5d33b9741ae96b7b70577eb7557~mv2.png", None, 900),
     "b2b-elektromobilitaet":                ("eb1f19_3400043426e146d1b15abff7c41a0ee9~mv2.png", None, 900),
-    "b2b-anlagenbetrieb":                ("eb1f19_57562a0f6f9f4615a1903eb2c17bb236~mv2.png", None, 900),
+    # the only landscape shot of the six service images - cropped to the same
+    # portrait proportions as its siblings so the card grid stays even
+    "b2b-anlagenbetrieb":                ("eb1f19_57562a0f6f9f4615a1903eb2c17bb236~mv2.png", (222, 0, 939, 896), 900),
     # one sprite sheet holding the three "3 Schritte" comic panels
     "step-1":               ("eb1f19_f3165b19e99746d1b92589c7f598d5d4~mv2.png", (62, 21, 458, 766), 520),
     "step-2":               ("eb1f19_f3165b19e99746d1b92589c7f598d5d4~mv2.png", (467, 30, 850, 766), 520),
@@ -64,10 +66,32 @@ FORCE_JPEG = {"b2b-anlagenbetrieb", "b2b-elektromobilitaet", "b2b-energiewirtsch
               "step-1", "step-2", "step-3"}
 
 
+# The six service illustrations sit in identically sized card media boxes, so
+# they are normalised to one portrait ratio and one pixel size.  Left at their
+# native proportions (0.60 to 0.80) each photo rendered at a different size.
+CARD_STEMS = {"service-foerderung", "service-technologie", "service-energie",
+              "b2b-energiewirtschaft", "b2b-elektromobilitaet", "b2b-anlagenbetrieb"}
+CARD_SIZE = (800, 1067)
+
+
+def to_card(im):
+    target = CARD_SIZE[0] / CARD_SIZE[1]
+    w, h = im.size
+    if w / h > target:                    # too wide - trim the sides
+        nw = round(h * target)
+        im = im.crop(((w - nw) // 2, 0, (w - nw) // 2 + nw, h))
+    else:                                 # too tall - trim top and bottom
+        nh = round(w / target)
+        im = im.crop((0, (h - nh) // 2, w, (h - nh) // 2 + nh))
+    return im.resize(CARD_SIZE, Image.LANCZOS)
+
+
 def write(im, stem, width, subdir=""):
     dest = os.path.join(OUT, subdir)
     os.makedirs(dest, exist_ok=True)
-    if im.width > width:
+    if stem in CARD_STEMS:
+        im = to_card(im)
+    elif im.width > width:
         h = round(im.height * width / im.width)
         im = im.resize((width, h), Image.LANCZOS)
     alpha = (im.mode in ("RGBA", "LA") or (im.mode == "P" and "transparency" in im.info))         and stem not in FORCE_JPEG

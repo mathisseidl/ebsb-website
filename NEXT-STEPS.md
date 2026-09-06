@@ -1,4 +1,4 @@
-# Wo wir stehen — Stand 5. September 2026
+# Wo wir stehen — Stand 6. September 2026
 
 Die Seite ist fertig gebaut und getestet: 9 Seiten, alle Links geprüft, deutscher
 Text wörtlich aus der alten Wix-Seite übernommen, responsive bis 375 px, keine
@@ -15,17 +15,41 @@ node scripts/serve.js 8080
 
 ## Offen — inhaltlich
 
-1. **Logo SV Straßlach** fehlt noch. Datei in `missing images/` legen, dann in
-   `engagement.html` den `<div class="logo-slot">` durch das Bild ersetzen
-   (die genaue Zeile steht als Kommentar direkt darüber).
+1. ~~Logo SV Straßlach~~ **erledigt.** Liegt als
+   `assets/img/logo-sv-strasslach.png` und ist in `engagement.html` eingebaut.
 
-2. **Kundenlogos B2B** („Auswahl unser Kunden"). Fünf Platzhalter-Kacheln in
-   `b2b.html` warten. Logos nach `assets/img/clients/`, dann
-   `<li class="empty">…</li>` ersetzen durch
-   `<li><img src="assets/img/clients/NAME.png" alt="NAME" /></li>`.
-   Die Kachel „und viele weitere" bleibt am Ende stehen.
-   *Hinweis:* diese Logos ließen sich nicht von Wix laden — Wix baut die Galerie
-   per JavaScript, die Bild-URLs stehen nicht im HTML.
+2. ~~Kundenlogos B2B~~ **erledigt.** Elf Logos liegen in `assets/img/clients/`
+   und stehen in `b2b.html` — in derselben Reihenfolge wie im Karussell der
+   alten Seite. Die Kachel „und viele weitere" steht weiterhin am Ende.
+
+   **Offen dabei:** ein zwölftes Logo — eine pink-orange gestreifte Kugel ohne
+   Schriftzug — konnte keiner Firma zugeordnet werden. Es liegt als
+   `assets/img/clients/unbekannt-globus.png` bereit; sobald der Name feststeht,
+   Datei umbenennen und in `b2b.html` als weitere `<li>` einfügen (Kommentar
+   steht dort).
+
+   *Hinweis zum SMS-Logo:* der Schriftzug „STADT MARKT STARNBERG" ist in der
+   Originaldatei weiß und deshalb auf der weißen Kachel kaum zu sehen — auf der
+   alten Wix-Seite war das genauso. Falls störend, bei der Stadt eine Version mit
+   dunklem Schriftzug anfragen.
+
+   *So kamen die Logos doch noch von Wix* (die frühere Notiz „geht nicht" war
+   falsch): das Karussell ist kein Wix-Widget, sondern ein selbst geschriebenes
+   HTML-Embed. Dessen Adresse steht in der Seiten-JSON von Wix:
+
+   ```
+   # 1. Seiten-JSON-Dateinamen aus dem HTML der Live-Seite lesen
+   curl -s https://www.ebsb.de/b2b | grep -o '"pageUriSEO":"[^"]*","pageJsonFileName":"[^"]*"'
+   # 2. die zugehörige siteassets.parastorage.com/pages/pages/thunderbolt?…-URL
+   #    aus demselben HTML holen (module=thunderbolt-features, pageId=<datei>.json)
+   # 3. darin steht die Embed-URL:
+   curl -s https://www-ebsb-de.filesusr.com/html/40a34f_56a8d6e2867c81cd79311fec172becda.html
+   ```
+
+   In derselben JSON stecken auch alle übrigen Bilder (`"uri"`) und die
+   Vektorgrafiken (`"svgId"` → `https://static.wixstatic.com/shapes/<id>.svg`).
+   Darüber sind u. a. das EBSB-Logo und das Special-Olympics-Logo als SVG
+   verfügbar, falls die PNG-Fassungen einmal zu grob wirken.
 
 3. **Datenschutzerklärung überarbeiten.** Der Text ist 1:1 von
    ebsb.de/datenschutz übernommen und beschreibt Google Analytics sowie

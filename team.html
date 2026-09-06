@@ -30,14 +30,20 @@
     <a class="brand" href="/" aria-label="EBSB GmbH — Startseite">
       <img class="brand-mark" src="assets/img/logo-mark.png" alt="" width="42" height="30" />
       <img class="brand-word" src="assets/img/logo-wordmark.png" alt="EBSB" width="74" height="17" />
-      <span class="brand-sub">Ihre Energieberatung in München und Südbayern</span>
+      <span class="brand-sub">Energieberatung Südbayern</span>
     </a>
     <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="primary-nav">
       <span></span><span></span><span></span>
     </button>
     <nav class="main-nav" id="primary-nav" aria-label="Hauptnavigation">
       <ul>
-        <li><a href="/">Home</a></li>
+        <li class="has-sub">
+          <a href="/">Home <span class="caret" aria-hidden="true"></span></a>
+          <ul class="subnav">
+            <li><a href="/">Startseite</a></li>
+            <li><a href="/#service">Privatkunden</a></li>
+          </ul>
+        </li>
         <li><a href="b2b.html">Geschäftskunden</a></li>
         <li><a href="team.html" aria-current="page">Team</a></li>
         <li><a href="philosophie.html">Philosophie</a></li>
@@ -56,30 +62,12 @@
 
   <section class="page-hero">
     <div class="container">
-      <p class="eyebrow">Unsere Geschichte</p>
-      <h1>Vom Energieberater zum Full-Service-Anbieter</h1>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="split">
-        <div class="prose reveal">
-          <p>Mit über 20 Jahren Management-Erfahrung in CFO-Positionen gründete Bernhard Seidl 2017 die BS Energie UG. Zu Beginn lag der Fokus auf klassischer Energieberatung für Privat- und Geschäftskunden. In den vergangenen Jahren hat sich das Unternehmen kontinuierlich zu einem Full-Service-Anbieter weiterentwickelt - von Energieberatung über Förderabwicklung bis hin zu Photovoltaik/Mieterstrom und E-Mobilität. Dabei hat sich das Unternehmen einen hervorragenden Ruf in München und Oberbayern erarbeitet. Ende 2024 erfolgte die Umbenennung der BS Energie UG in die EBSB GmbH.</p>
-        </div>
-        <div class="pullquote reveal">
-          <p>Mit einem dynamisch wachsenden Team aus mehr als einem Dutzend festangestellten Mitarbeitern sowie Freiberuflern verfolgt das Unternehmen die Vision, der führende Anbieter individueller und maßgeschneiderter Energieberatung in Südbayern zu werden.</p>
-        </div>
-      </div>
+      <h1 class="section-title">Unser Team</h1>
     </div>
   </section>
 
   <section class="section section-alt">
     <div class="container">
-      <div class="section-head reveal">
-        <p class="eyebrow">Unser Team</p>
-        <h2>Die Menschen hinter EBSB</h2>
-      </div>
 
       <article class="person-featured reveal">
         <div class="portrait">
@@ -88,7 +76,7 @@
             <img src="assets/img/team/person-01.jpg" alt="Porträt von Bernhard Seidl" width="620" height="620" loading="lazy" />
           </picture>
         </div>
-        <div>
+        <div class="person-featured-main">
           <h3>Bernhard Seidl</h3>
           <p class="role">Gründer &amp; CEO</p>
           <ul class="checklist">
@@ -99,6 +87,9 @@
             <li>Dipl.-Ing. Elektrotechnik (TU München)</li>
             <li>MBA (UCLA)</li>
           </ul>
+        </div>
+        <div class="person-bio">
+          <p>Mit über 20 Jahren Management-Erfahrung in CFO-Positionen gründete Bernhard Seidl 2017 die BS Energie UG. Zu Beginn lag der Fokus auf klassischer Energieberatung für Privat- und Geschäftskunden. In den vergangenen Jahren hat sich das Unternehmen kontinuierlich zu einem Full-Service-Anbieter weiterentwickelt - von Energieberatung über Förderabwicklung bis hin zu Photovoltaik/Mieterstrom und E-Mobilität. Dabei hat sich das Unternehmen einen hervorragenden Ruf in München und Oberbayern erarbeitet. Ende 2024 erfolgte die Umbenennung der BS Energie UG in die EBSB GmbH.</p>
         </div>
       </article>
 

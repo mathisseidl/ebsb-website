@@ -30,14 +30,20 @@
     <a class="brand" href="/" aria-label="EBSB GmbH — Startseite">
       <img class="brand-mark" src="assets/img/logo-mark.png" alt="" width="42" height="30" />
       <img class="brand-word" src="assets/img/logo-wordmark.png" alt="EBSB" width="74" height="17" />
-      <span class="brand-sub">Ihre Energieberatung in München und Südbayern</span>
+      <span class="brand-sub">Energieberatung Südbayern</span>
     </a>
     <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="primary-nav">
       <span></span><span></span><span></span>
     </button>
     <nav class="main-nav" id="primary-nav" aria-label="Hauptnavigation">
       <ul>
-        <li><a href="/">Home</a></li>
+        <li class="has-sub">
+          <a href="/">Home <span class="caret" aria-hidden="true"></span></a>
+          <ul class="subnav">
+            <li><a href="/">Startseite</a></li>
+            <li><a href="/#service">Privatkunden</a></li>
+          </ul>
+        </li>
         <li><a href="b2b.html" aria-current="page">Geschäftskunden</a></li>
         <li><a href="team.html">Team</a></li>
         <li><a href="philosophie.html">Philosophie</a></li>
@@ -56,20 +62,18 @@
 
   <section class="page-hero">
     <div class="container">
-      <p class="eyebrow">Unser Service — Für Geschäftskunden</p>
-      <h1>Energieprojekte, die sich rechnen</h1>
-      <p class="lede">Von der Wirtschaftlichkeitsanalyse über das Energieaudit bis zum laufenden Anlagenbetrieb — wir begleiten Gewerbe, Industrie und Immobilienwirtschaft auf dem Weg zur Klimaneutralität.</p>
+      <h1 class="section-title">Unser Service für Geschäftskunden</h1>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <div class="cards">
+      <div class="cards cards-even">
         <article class="card reveal">
           <div class="card-media">
             <picture>
               <source srcset="assets/img/b2b-energiewirtschaft.webp" type="image/webp" />
-              <img src="assets/img/b2b-energiewirtschaft.jpg" alt="Beratungsunterlagen zur energiewirtschaftlichen Beratung mit bewilligter Förderzusage" width="896" height="672" loading="lazy" />
+              <img src="assets/img/b2b-energiewirtschaft.jpg" alt="Beratungsunterlagen zur energiewirtschaftlichen Beratung mit bewilligter Förderzusage" width="800" height="1067" loading="lazy" />
             </picture>
           </div>
           <div class="card-body">
@@ -90,7 +94,7 @@
           <div class="card-media">
             <picture>
               <source srcset="assets/img/b2b-elektromobilitaet.webp" type="image/webp" />
-              <img src="assets/img/b2b-elektromobilitaet.jpg" alt="Ladeinfrastruktur für Elektrofahrzeuge mit Auswertung von Ladeleistung und THG-Quote" width="896" height="672" loading="lazy" />
+              <img src="assets/img/b2b-elektromobilitaet.jpg" alt="Ladeinfrastruktur für Elektrofahrzeuge mit Auswertung von Ladeleistung und THG-Quote" width="800" height="1067" loading="lazy" />
             </picture>
           </div>
           <div class="card-body">
@@ -111,7 +115,7 @@
           <div class="card-media">
             <picture>
               <source srcset="assets/img/b2b-anlagenbetrieb.webp" type="image/webp" />
-              <img src="assets/img/b2b-anlagenbetrieb.jpg" alt="Energie-Status-Portal an einer Gebäudewand zur Überwachung von Photovoltaik und Mieterstrom" width="900" height="672" loading="lazy" />
+              <img src="assets/img/b2b-anlagenbetrieb.jpg" alt="Energie-Status-Portal an einer Gebäudewand zur Überwachung von Photovoltaik und Mieterstrom" width="800" height="1067" loading="lazy" />
             </picture>
           </div>
           <div class="card-body">
@@ -125,27 +129,6 @@
           </div>
         </article>
       </div>
-    </div>
-  </section>
-
-  <section class="section section-alt">
-    <div class="container">
-      <div class="section-head center reveal">
-        <p class="eyebrow">Referenzen</p>
-        <h2>Auswahl unser Kunden</h2>
-      </div>
-
-      <!-- Logo files go in assets/img/clients/. Replace the placeholder tiles
-           below with <li><img src="assets/img/clients/NAME.png" alt="NAME" /></li>
-           and keep the "und viele weitere" tile last. -->
-      <ul class="logo-strip reveal">
-        <li class="empty">Kundenlogo<br />folgt</li>
-        <li class="empty">Kundenlogo<br />folgt</li>
-        <li class="empty">Kundenlogo<br />folgt</li>
-        <li class="empty">Kundenlogo<br />folgt</li>
-        <li class="empty">Kundenlogo<br />folgt</li>
-        <li class="more">und viele weitere</li>
-      </ul>
     </div>
   </section>
 

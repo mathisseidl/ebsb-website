@@ -55,14 +55,20 @@
     <a class="brand" href="/" aria-label="EBSB GmbH — Startseite">
       <img class="brand-mark" src="assets/img/logo-mark.png" alt="" width="42" height="30" />
       <img class="brand-word" src="assets/img/logo-wordmark.png" alt="EBSB" width="74" height="17" />
-      <span class="brand-sub">Ihre Energieberatung in München und Südbayern</span>
+      <span class="brand-sub">Energieberatung Südbayern</span>
     </a>
     <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="primary-nav">
       <span></span><span></span><span></span>
     </button>
     <nav class="main-nav" id="primary-nav" aria-label="Hauptnavigation">
       <ul>
-        <li><a href="/" aria-current="page">Home</a></li>
+        <li class="has-sub">
+          <a href="/" aria-current="page">Home <span class="caret" aria-hidden="true"></span></a>
+          <ul class="subnav">
+            <li><a href="/">Startseite</a></li>
+            <li><a href="/#service">Privatkunden</a></li>
+          </ul>
+        </li>
         <li><a href="b2b.html">Geschäftskunden</a></li>
         <li><a href="team.html">Team</a></li>
         <li><a href="philosophie.html">Philosophie</a></li>
@@ -83,9 +89,8 @@
     <div class="container">
       <div class="hero-grid">
         <div class="hero-text">
-          <p class="kicker"><span class="dot"></span> Privatkunden</p>
           <h1>Willkommen bei <span class="accent">EBSB</span></h1>
-          <p class="lede">Ihre Energieberatung in München und Südbayern</p>
+          <p class="lede">Energieberatung Südbayern</p>
           <ul class="checklist" style="margin-bottom:32px">
             <li>Persönlich &amp; zuverlässig</li>
             <li>Vielfältig &amp; anpassungsfähig</li>
@@ -103,180 +108,148 @@
     </div>
   </section>
 
-  <section class="trustbar" aria-label="EBSB in Zahlen">
-    <div class="trustbar-grid">
-      <div class="trustbar-item">
-        <span class="num">über 3.500</span>
-        <p>zufriedene Kunden</p>
-      </div>
-      <div class="trustbar-item">
-        <span class="num">über 3.000</span>
-        <p>erfolgreich abgeschlossene Förderungen und Energieberatungen</p>
-      </div>
-      <div class="trustbar-item">
-        <span class="num">5.0 <small>aus 85+</small></span>
-        <p class="google">
-          <img src="assets/img/logo-google.png" alt="" width="15" height="15" loading="lazy" />
-          Google Bewertungen
-        </p>
+
+  <!-- Kundenlogos als laufendes Band — übernommen aus dem Logo-Karussell der
+       alten Wix-Seite. Die zweite Hälfte der Liste ist eine reine Dublette,
+       damit der Umlauf nahtlos ist; sie ist deshalb aria-hidden und ohne alt.
+       Ein zwölftes Logo liegt ungenutzt als
+       assets/img/clients/unbekannt-globus.png (Firma noch unbekannt). -->
+  <section class="logo-river" aria-label="Auswahl unserer Kunden">
+    <div class="container">
+      <p class="eyebrow">Auswahl unserer Kunden</p>
+    </div>
+    <div class="logo-river-rail">
+      <div class="logo-river-mask">
+        <ul class="logo-river-track">
+          <li><img src="assets/img/clients/gemeindewerke-oberhaching.svg" alt="Gemeindewerke Oberhaching" width="959" height="192" loading="lazy" decoding="async" /></li>
+          <li><img src="assets/img/clients/geothermie-unterhaching.svg" alt="Geothermie Unterhaching" width="383" height="107" loading="lazy" decoding="async" /></li>
+          <li><img src="assets/img/clients/erdwaerme-gruenwald.svg" alt="Erdwärme Grünwald" width="1250" height="539" loading="lazy" decoding="async" /></li>
+          <li><img src="assets/img/clients/bavaria-film.svg" alt="Bavaria Film" width="300" height="22" loading="lazy" decoding="async" /></li>
+          <li><img src="assets/img/clients/fwu-medieninstitut.svg" alt="FWU — Das Medieninstitut der Länder" width="287" height="102" loading="lazy" decoding="async" /></li>
+          <li><img src="assets/img/clients/pyur.svg" alt="PŸUR" width="126" height="49" loading="lazy" decoding="async" /></li>
+          <li><img src="assets/img/clients/energie-wende-garching.svg" alt="EWG — Energie-Wende-Garching" width="220" height="92" loading="lazy" decoding="async" /></li>
+          <li><img src="assets/img/clients/stadt-markt-starnberg.png" alt="SMS — Stadt Markt Starnberg" width="690" height="200" loading="lazy" decoding="async" /></li>
+          <li><img src="assets/img/clients/zes.jpg" alt="ZES" width="600" height="202" loading="lazy" decoding="async" /></li>
+          <li><img src="assets/img/clients/iep-innovative-energie-pullach.png" alt="IEP — Innovative Energie Pullach" width="335" height="176" loading="lazy" decoding="async" /></li>
+          <li><img src="assets/img/clients/triga-s.png" alt="TRIGA-S Scientific Solutions" width="288" height="77" loading="lazy" decoding="async" /></li>
+          <li aria-hidden="true"><img src="assets/img/clients/gemeindewerke-oberhaching.svg" alt="" width="959" height="192" loading="lazy" decoding="async" /></li>
+          <li aria-hidden="true"><img src="assets/img/clients/geothermie-unterhaching.svg" alt="" width="383" height="107" loading="lazy" decoding="async" /></li>
+          <li aria-hidden="true"><img src="assets/img/clients/erdwaerme-gruenwald.svg" alt="" width="1250" height="539" loading="lazy" decoding="async" /></li>
+          <li aria-hidden="true"><img src="assets/img/clients/bavaria-film.svg" alt="" width="300" height="22" loading="lazy" decoding="async" /></li>
+          <li aria-hidden="true"><img src="assets/img/clients/fwu-medieninstitut.svg" alt="" width="287" height="102" loading="lazy" decoding="async" /></li>
+          <li aria-hidden="true"><img src="assets/img/clients/pyur.svg" alt="" width="126" height="49" loading="lazy" decoding="async" /></li>
+          <li aria-hidden="true"><img src="assets/img/clients/energie-wende-garching.svg" alt="" width="220" height="92" loading="lazy" decoding="async" /></li>
+          <li aria-hidden="true"><img src="assets/img/clients/stadt-markt-starnberg.png" alt="" width="690" height="200" loading="lazy" decoding="async" /></li>
+          <li aria-hidden="true"><img src="assets/img/clients/zes.jpg" alt="" width="600" height="202" loading="lazy" decoding="async" /></li>
+          <li aria-hidden="true"><img src="assets/img/clients/iep-innovative-energie-pullach.png" alt="" width="335" height="176" loading="lazy" decoding="async" /></li>
+          <li aria-hidden="true"><img src="assets/img/clients/triga-s.png" alt="" width="288" height="77" loading="lazy" decoding="async" /></li>
+        </ul>
       </div>
     </div>
+  </section>
+
+  <section class="trustbar" aria-label="EBSB in Zahlen">
     <div class="container">
-      <p class="trustbar-note">Über 3.500 zufriedene Kunden - Jahrelange Erfahrung und fundiertes Wissen bei über 3.000 erfolgreich abgeschlossenen Förderungen und Energieberatungen für Privat - sowie Geschäftskunden -</p>
+      <ul class="stats">
+        <li class="stat">
+          <span class="stat-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+          </span>
+          <span class="stat-num">über 3.500</span>
+          <span class="stat-label">zufriedene Kunden</span>
+        </li>
+        <li class="stat">
+          <span class="stat-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21.8 10A10 10 0 1 1 17 3.34" /><path d="m9 11 3 3L22 4" />
+            </svg>
+          </span>
+          <span class="stat-num">über 3.000</span>
+          <span class="stat-label">erfolgreich abgeschlossene Förderungen und Energieberatungen</span>
+        </li>
+        <li class="stat">
+          <span class="stat-ico stat-ico-plain" aria-hidden="true">
+            <img src="assets/img/logo-google.png" alt="" width="22" height="22" loading="lazy" />
+          </span>
+          <span class="stat-num">5,0</span>
+          <span class="stat-stars" aria-hidden="true">★★★★★</span>
+          <span class="stat-label">aus 85+ Google Bewertungen</span>
+        </li>
+      </ul>
     </div>
   </section>
 
   <section class="section" id="service">
     <div class="container">
       <div class="section-head reveal">
-        <p class="eyebrow">Unser Service — Für Privatkunden</p>
-        <h2>Wir unterstützen Sie auf dem Weg zur Klimaneutralität!</h2>
+        <h2 class="section-title">Unser Service für Privatkunden</h2>
       </div>
 
       <div class="cards">
         <article class="card reveal">
           <div class="card-media">
             <picture>
-              <source srcset="assets/img/service-foerderung.webp" type="image/webp" />
-              <img src="assets/img/service-foerderung.jpg" alt="Bewilligte KfW-Förderzusage auf einem Schreibtisch neben einem Auszahlungs-Dashboard" width="800" height="600" loading="lazy" />
-            </picture>
-          </div>
-          <div class="card-body">
-            <h3>Förderabwicklung</h3>
-            <p class="card-tagline">Von der Antragstellung bis zur Auszahlung</p>
-            <ul class="checklist">
-              <li>Maximierung ihrer Förderzuschüsse</li>
-              <li>Unterstützung zur Nutzung steuerlicher Fördermöglichkeiten (§35c EStG.)</li>
-              <li>Beratung zu Finanzierungsmöglichkeiten</li>
-              <li>Berücksichtigung aller technischen und infrastrukturellen Rahmenbedingungen</li>
-              <li>Strikte Einhaltung der förderrechtlichen und gesetzlichen Anforderungen</li>
-            </ul>
-            <a class="btn btn-green btn-sm btn-arrow" href="kontakt.html">Kostenlose Erstberatung</a>
-          </div>
-        </article>
-
-        <article class="card reveal">
-          <div class="card-media">
-            <picture>
-              <source srcset="assets/img/service-technologie.webp" type="image/webp" />
-              <img src="assets/img/service-technologie.jpg" alt="Gebäudemodell mit Photovoltaik, Batteriespeicher und Ladepunkt für Elektrofahrzeuge" width="848" height="636" loading="lazy" />
-            </picture>
-          </div>
-          <div class="card-body">
-            <h3>Technologie Beratung</h3>
-            <p class="card-tagline">Innovative Energielösungen für eine nachhaltige Zukunft</p>
-            <ul class="checklist">
-              <li>Steigerung der Autarkie und Wirtschaftlichkeit durch den Einsatz von Batteriespeichern</li>
-              <li>Einsatz von Photovoltaik für eine nachhaltige Energieversorgung</li>
-              <li>Umstellung auf Elektromobilität mit passenden Energieversorungslösungen</li>
-              <li>Konzeption und Beschaffung von Ladeinfrastruktur mit verschiedenen Betreiber- und Abrechnungsmodellen</li>
-              <li>Nutzung von Mieterstrommodellen</li>
-            </ul>
-            <a class="btn btn-green btn-sm btn-arrow" href="kontakt.html">Kostenlose Erstberatung</a>
-          </div>
-        </article>
-
-        <article class="card reveal">
-          <div class="card-media">
-            <picture>
               <source srcset="assets/img/service-energie.webp" type="image/webp" />
-              <img src="assets/img/service-energie.jpg" alt="Thermografische Energieanalyse eines Wohnhauses auf einem Tablet" width="800" height="600" loading="lazy" />
+              <img src="assets/img/service-energie.jpg" alt="Thermografische Energieanalyse eines Wohnhauses auf einem Tablet" width="800" height="1067" loading="lazy" />
             </picture>
           </div>
           <div class="card-body">
             <h3>Energieberatung</h3>
             <p class="card-tagline">Energieeffizienz steigern und Kosten nachhaltig senken</p>
             <ul class="checklist">
-              <li>Erstellung von Energieausweisen</li>
-              <li>Verbesserung der Qualität Ihrer Gebäudehülle</li>
-              <li>Optimierung Ihrer Energieversorgungsverträge</li>
-              <li>Begleitung bei der Sanierung ihrer Bestandsimmobilie zu einem KfW-Effizienzhaus</li>
-              <li>Umsetzung von KfW Effizienzhäusern/ Passivhäusern im Neubau</li>
-              <li>Unterstützung bei der Neukonzeption Ihrer Anlagentechnik</li>
-              <li>Beratung vor Ort (BAFA, iSFP), egal ob Einfamilienhäuser, Mehrfamilienhäuser, WEGs, denkmalgeschützte Gebäude</li>
+              <li>Erstellung von <b>Energieausweisen</b></li>
+              <li>Verbesserung der Qualität Ihrer <b>Gebäudehülle</b></li>
+              <li>Optimierung Ihrer <b>Energieversorgungsverträge</b></li>
+              <li>Begleitung bei der Sanierung ihrer Bestandsimmobilie zu einem <b>KfW-Effizienzhaus</b></li>
+              <li>Umsetzung von KfW Effizienzhäusern/ Passivhäusern im <b>Neubau</b></li>
+              <li>Unterstützung bei der Neukonzeption Ihrer <b>Anlagentechnik</b></li>
+              <li>Beratung vor Ort (BAFA, iSFP), egal ob <b>Einfamilienhäuser, Mehrfamilienhäuser, WEGs, denkmalgeschützte Gebäude</b></li>
             </ul>
             <a class="btn btn-green btn-sm btn-arrow" href="kontakt.html">Kostenlose Erstberatung</a>
           </div>
         </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-alt">
-    <div class="container">
-      <div class="section-head center reveal">
-        <p class="eyebrow">So gehen wir vor</p>
-        <h2>In 3 Schritten zur Zukunftssicherheit Ihrer Immobilie</h2>
-        <p>Sollten Sie bisher keine Erfahrung mit EBSB und unseren Dienstleistungen gesammelt haben, helfen ihnen die folgenden 3 Schritte als Orientierung für den weiteren Verlauf.</p>
-      </div>
-
-      <ol class="steps">
-        <li class="step reveal">
-          <span class="step-num" aria-hidden="true">1</span>
-          <div class="step-figure">
+        <article class="card reveal">
+          <div class="card-media">
             <picture>
-              <source srcset="assets/img/step-1.webp" type="image/webp" />
-              <img src="assets/img/step-1.jpg" alt="Illustration: Kundin telefoniert am Schreibtisch mit EBSB" width="396" height="495" loading="lazy" />
+              <source srcset="assets/img/service-foerderung.webp" type="image/webp" />
+              <img src="assets/img/service-foerderung.jpg" alt="Bewilligte KfW-Förderzusage auf einem Schreibtisch neben einem Auszahlungs-Dashboard" width="800" height="1067" loading="lazy" />
             </picture>
           </div>
-          <h3>1. Kostenloses Erstgespräch</h3>
-          <p>Lassen Sie sich von unserem umfassenden Angebot rund um erneuerbare Energien inspirieren, ganz egal, ob Sie Privat- oder Geschäftskunde sind. Kontaktieren Sie uns gerne für ein kostenloses Erstgespräch, sollten Sie keine passende Lösung für ihr Anliegen finden.</p>
-        </li>
-        <li class="step reveal">
-          <span class="step-num" aria-hidden="true">2</span>
-          <div class="step-figure">
+          <div class="card-body">
+            <h3>Förderabwicklung</h3>
+            <p class="card-tagline">Von der Antragstellung bis zur Auszahlung</p>
+            <ul class="checklist">
+              <li>Maximierung ihrer <b>Förderzuschüsse</b></li>
+              <li>Unterstützung zur Nutzung <b>steuerlicher Fördermöglichkeiten</b> (§35c EStG.)</li>
+              <li>Beratung zu <b>Finanzierungsmöglichkeiten</b></li>
+              <li>Berücksichtigung aller technischen und infrastrukturellen <b>Rahmenbedingungen</b></li>
+              <li>Strikte Einhaltung der förderrechtlichen und gesetzlichen <b>Anforderungen</b></li>
+            </ul>
+            <a class="btn btn-green btn-sm btn-arrow" href="kontakt.html">Kostenlose Erstberatung</a>
+          </div>
+        </article>
+        <article class="card reveal">
+          <div class="card-media">
             <picture>
-              <source srcset="assets/img/step-2.webp" type="image/webp" />
-              <img src="assets/img/step-2.jpg" alt="Illustration: Auswahl aus den Angeboten Erneuerbare Energien, Förderabwicklung und Elektromobilität" width="383" height="479" loading="lazy" />
+              <source srcset="assets/img/service-technologie.webp" type="image/webp" />
+              <img src="assets/img/service-technologie.jpg" alt="Gebäudemodell mit Photovoltaik, Batteriespeicher und Ladepunkt für Elektrofahrzeuge" width="800" height="1067" loading="lazy" />
             </picture>
           </div>
-          <h3>2. Service Angebot</h3>
-          <p>Wählen Sie aus einer großen Auswahl an Beratungsangeboten rund um erneuerbare Energien, Förderabwicklungen, Elektromobilität oder Anlagenbetrieb. Wir geben unser Bestes, ihre Wünsche zu erfüllen.</p>
-        </li>
-        <li class="step reveal">
-          <span class="step-num" aria-hidden="true">3</span>
-          <div class="step-figure">
-            <picture>
-              <source srcset="assets/img/step-3.webp" type="image/webp" />
-              <img src="assets/img/step-3.jpg" alt="Illustration: Beratungsgespräch zur Energieberatung, die sich auszahlt" width="400" height="500" loading="lazy" />
-            </picture>
+          <div class="card-body">
+            <h3>Technologie Beratung</h3>
+            <p class="card-tagline">Innovative Energielösungen für eine nachhaltige Zukunft</p>
+            <ul class="checklist">
+              <li>Steigerung der Autarkie und Wirtschaftlichkeit durch den Einsatz von <b>Batteriespeichern</b></li>
+              <li>Einsatz von <b>Photovoltaik</b> für eine nachhaltige Energieversorgung</li>
+              <li>Umstellung auf <b>Elektromobilität</b> mit passenden Energieversorungslösungen</li>
+              <li>Konzeption und Beschaffung von <b>Ladeinfrastruktur</b> mit verschiedenen Betreiber- und Abrechnungsmodellen</li>
+              <li>Nutzung von <b>Mieterstrommodellen</b></li>
+            </ul>
+            <a class="btn btn-green btn-sm btn-arrow" href="kontakt.html">Kostenlose Erstberatung</a>
           </div>
-          <h3>3. Förderabwicklung / Energieberatung</h3>
-          <p>Sind alle von Ihnen gestellten Wünsche, Fragen oder Anregungen geklärt und haben Sie sich für einen oder gleich mehrere unserer Services entschieden, kümmern wir uns um den Rest.</p>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="section-head center reveal">
-        <p class="eyebrow">Referenzen</p>
-        <h2>Meinungen unser Kunden</h2>
-        <p>Bereits jetzt vertrauen neben zahlreichen Geschäftskunden auch viele Privatkunden auf EBSB. Hier finden Sie eine handverlesene Auswahl unserer Google-Bewertungen.</p>
-        <p class="google-badge">
-          <img src="assets/img/logo-google.png" alt="Google" width="17" height="17" loading="lazy" />
-          <span class="stars" aria-hidden="true">★★★★★</span>
-          <span><b>5.0</b> aus 85+ Google Bewertungen</span>
-        </p>
-      </div>
-
-      <div class="quotes">
-        <figure class="quote reveal">
-          <p class="stars" aria-label="5 von 5 Sternen">★★★★★</p>
-          <blockquote>„Absolut kompetente und vertrauenswürdige Beratung, schnelle, unkomplizierte Abwicklung und großartiger Service! Hier steht der Kunde im Mittelpunkt! Nur zu empfehlen!“</blockquote>
-          <figcaption>- C.B -</figcaption>
-        </figure>
-        <figure class="quote reveal">
-          <p class="stars" aria-label="5 von 5 Sternen">★★★★★</p>
-          <blockquote>„Sehr gute Beratung, haben uns wohl gefühlt. Wurden auf alle Eventualitäten hingewiesen. Immer ansprechbar. Auszahlungssumme war wie geplant, alles bestens, sehr zu empfehlen, danke!“</blockquote>
-          <figcaption>- K.T -</figcaption>
-        </figure>
-        <figure class="quote reveal">
-          <p class="stars" aria-label="5 von 5 Sternen">★★★★★</p>
-          <blockquote>„Die Zusammenarbeit mit BS Energie war nicht nur stets freundlich und unterstützend, sondern hat, trotz einiger Hürden, die zu überwinden waren, zu einer erfolgreichen Unterstützung unseres Heizungsumbaus geführt. Danke.“</blockquote>
-          <figcaption>- A.N -</figcaption>
-        </figure>
+        </article>
       </div>
     </div>
   </section>

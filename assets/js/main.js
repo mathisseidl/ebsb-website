@@ -3,11 +3,13 @@
 
 /* ---------------------------------------------------------------------------
    Contact form endpoint.
-   Paste the Web3Forms access key here (https://web3forms.com — free, no account
-   needed; the key is public by design and is safe to commit).
-   Until it is set, the form falls back to opening the visitor's mail client.
+   The Web3Forms access key (https://web3forms.com) is public by design — it
+   sits in the page source either way — so it is safe to commit.
+   Where the mail lands is decided by Web3Forms, not by this file: submissions
+   go to the address the key is registered to, which must be CONTACT_EMAIL.
+   Until a key is set, the form falls back to the visitor's mail client.
    --------------------------------------------------------------------------- */
-const WEB3FORMS_KEY = "REPLACE_WITH_YOUR_WEB3FORMS_ACCESS_KEY";
+const WEB3FORMS_KEY = "9e0b6098-4732-4817-a9fd-0e63d7c53ee9";
 const CONTACT_EMAIL = "info@ebsb.de";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -128,6 +130,10 @@ document.addEventListener("DOMContentLoaded", () => {
    --------------------------------------------------------------------------- */
 function initContactForm(form) {
   const status = form.querySelector(".form-status");
+  // Keep the markup's copy of the key in step with the constant above, so
+  // rotating it in one place is enough.
+  const keyField = form.querySelector("input[name='access_key']");
+  if (keyField) keyField.value = WEB3FORMS_KEY;
   const submit = form.querySelector("button[type='submit']");
   const submitLabel = submit ? submit.textContent : "Senden";
   const keyIsSet = WEB3FORMS_KEY && !WEB3FORMS_KEY.startsWith("REPLACE_WITH");

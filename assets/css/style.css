@@ -536,7 +536,7 @@ strong { color: var(--ink); font-weight: 600; }
 }
 .stat {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-columns: auto auto minmax(0, 1fr);
   align-items: center;
   column-gap: 13px;
   row-gap: 1px;
@@ -562,7 +562,12 @@ strong { color: var(--ink); font-weight: 600; }
 /* the Google mark is multicolour, so it gets a plain plate instead of the tint */
 .stat-ico-plain { background: #fff; border: 1px solid var(--border); }
 .stat-ico-plain img { width: 17px; height: 17px; }
-.stat-num, .stat-stars, .stat-label { grid-column: 2; }
+/* Figure and stars share the top row so the rating reads "5,0 ★★★★★" on one
+   line; the caption spans both columns underneath. The two cards without a
+   rating simply leave the third column empty. */
+.stat-num { grid-column: 2; grid-row: 1; }
+.stat-stars { grid-column: 3; grid-row: 1; }
+.stat-label { grid-column: 2 / -1; grid-row: 2; }
 .stat-num {
   font-family: var(--font-head);
   font-size: clamp(1.05rem, .95rem + .35vw, 1.3rem);
@@ -571,7 +576,14 @@ strong { color: var(--ink); font-weight: 600; }
   letter-spacing: -.03em;
   color: var(--ink);
 }
-.stat-stars { color: var(--amber); letter-spacing: 2px; font-size: .72rem; line-height: 1.1; }
+.stat-stars {
+  justify-self: start;
+  margin-left: -4px;
+  color: var(--amber);
+  letter-spacing: 2px;
+  font-size: .72rem;
+  line-height: 1.1;
+}
 .stat-label { font-size: .78rem; line-height: 1.35; color: var(--muted); }
 
 /* ==========================================================================

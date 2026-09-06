@@ -507,10 +507,13 @@ strong { color: var(--ink); font-weight: 600; }
 }
 .page-hero h1:not(.section-title) { font-size: clamp(2rem, 1.4rem + 2.6vw, 3.1rem); margin-bottom: .3em; }
 .page-hero .lede { font-size: clamp(1.0625rem, 1rem + .35vw, 1.25rem); }
-/* A section opening straight under the header band does not need the full
-   between-sections gap on top of the band's own padding — the two together
-   left an empty strip taller than the title itself. */
-.page-hero + .section { padding-top: clamp(28px, 3vw, 44px); }
+/* A section opening straight under a full-width band does not need the full
+   between-sections gap on top of that band's own padding — the two together
+   left an empty strip taller than the title itself. Applies to the page
+   header band on the interior pages and to the trust band on the start page,
+   so the run-up to a section title is the same everywhere. */
+.page-hero + .section,
+.trustbar + .section { padding-top: clamp(28px, 3vw, 44px); }
 
 /* ==========================================================================
    Trust bar

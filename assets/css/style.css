@@ -1170,7 +1170,7 @@ strong { color: var(--ink); font-weight: 600; }
 
 .field-consent { display: grid; grid-template-columns: auto 1fr; gap: 11px; align-items: start; margin-bottom: 24px; }
 .field-consent input { width: 18px; height: 18px; margin: 3px 0 0; accent-color: var(--blue); }
-.field-consent label { font-size: .9rem; font-weight: 400; color: var(--muted); line-height: 1.55; margin: 0; }
+.field-consent label { font-size: .85rem; font-weight: 400; color: var(--muted); line-height: 1.5; margin: 0; }
 .field-consent.invalid label { color: #c0392b; }
 
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }

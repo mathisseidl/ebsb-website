@@ -517,53 +517,62 @@ strong { color: var(--ink); font-weight: 600; }
    ========================================================================== */
 /* Three facts, built from the same white-card idiom as the rest of the site
    (border + radius + soft shadow) so the band stops reading as a stray strip. */
+/* Compact trust band. The three facts used to sit in tall stacked cards with
+   everything centred, which made this strip taller than the hero it followed.
+   Turning each card on its side — icon left, figure and caption right — takes
+   the band to roughly two fifths of that height without shrinking the type to
+   the point of illegibility; the icon spans both text rows so the caption can
+   wrap without pushing it out of line. */
 .trustbar {
-  padding: clamp(38px, 4.6vw, 64px) 0;
+  padding: clamp(18px, 1.9vw, 26px) 0;
   background: var(--bg-alt);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
 .stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: clamp(18px, 2.2vw, 28px);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: clamp(12px, 1.4vw, 18px);
 }
 .stat {
   display: grid;
-  justify-items: center;
-  align-content: start;
-  gap: 7px;
-  padding: clamp(26px, 3vw, 38px) clamp(20px, 2.4vw, 30px);
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  column-gap: 13px;
+  row-gap: 1px;
+  padding: clamp(12px, 1.3vw, 16px) clamp(14px, 1.5vw, 18px);
   background: #fff;
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: var(--radius-sm);
   box-shadow: var(--shadow-sm);
-  text-align: center;
+  text-align: left;
 }
 .stat-ico {
   display: grid;
   place-items: center;
-  width: 46px;
-  height: 46px;
-  margin-bottom: 6px;
-  border-radius: 14px;
+  grid-column: 1;
+  grid-row: 1 / -1;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
   background: var(--blue-soft);
   color: var(--blue-dk);
 }
-.stat-ico svg { width: 22px; height: 22px; }
+.stat-ico svg { width: 17px; height: 17px; }
 /* the Google mark is multicolour, so it gets a plain plate instead of the tint */
 .stat-ico-plain { background: #fff; border: 1px solid var(--border); }
-.stat-ico-plain img { width: 22px; height: 22px; }
+.stat-ico-plain img { width: 17px; height: 17px; }
+.stat-num, .stat-stars, .stat-label { grid-column: 2; }
 .stat-num {
   font-family: var(--font-head);
-  font-size: clamp(1.7rem, 1.2rem + 1.7vw, 2.35rem);
+  font-size: clamp(1.05rem, .95rem + .35vw, 1.3rem);
   font-weight: 800;
-  line-height: 1.05;
+  line-height: 1.2;
   letter-spacing: -.03em;
   color: var(--ink);
 }
-.stat-stars { color: var(--amber); letter-spacing: 3px; font-size: .95rem; line-height: 1; }
-.stat-label { max-width: 31ch; font-size: .9375rem; color: var(--muted); }
+.stat-stars { color: var(--amber); letter-spacing: 2px; font-size: .72rem; line-height: 1.1; }
+.stat-label { font-size: .78rem; line-height: 1.35; color: var(--muted); }
 
 /* ==========================================================================
    Kundenlogos - laufendes Band

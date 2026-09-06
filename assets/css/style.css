@@ -1040,6 +1040,16 @@ strong { color: var(--ink); font-weight: 600; }
 .partner-gallery picture { display: block; overflow: hidden; border-radius: var(--radius-sm); background: var(--bg-alt); }
 .partner-gallery picture:first-child { grid-column: 1 / -1; }
 .partner-gallery img { width: 100%; height: 100%; object-fit: cover; }
+/* This tile has the same 3:4 proportion as its source file, so object-fit
+   crops nothing and the three athletes end up small under a lot of empty sky.
+   Scaling from the bottom edge pulls them closer: at 1.25 the visible window
+   starts about 213px down the original, which drops the sky but keeps roughly
+   40px of headroom above the heads and the boots just inside the frame. The
+   tile itself is untouched, so no surrounding layout moves. */
+.partner-gallery picture.crop-in img {
+  transform: scale(1.25);
+  transform-origin: 50% 100%;
+}
 
 /* Partners we have a logo but no photograph for. */
 .partner-figure.logo-panel {

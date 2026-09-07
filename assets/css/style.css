@@ -1000,6 +1000,9 @@ strong { color: var(--ink); font-weight: 600; }
 .person-body { flex: 1; padding: 22px 24px 26px; }
 .person-body h3 { font-size: 1.15rem; margin-bottom: .12em; }
 .person-body .role { font-size: .9rem; font-weight: 600; color: var(--blue-dk); margin-bottom: 1.15em; }
+/* Karten ohne Rollenzeile (Thomas, Karin): der Name sitzt sonst direkt auf dem
+   ersten Stichpunkt - die fehlende Rolle als Abstand nachbilden. */
+.person-body h3 + .checklist { margin-top: .9em; }
 
 /* ==========================================================================
    Partner cards (Engagement)

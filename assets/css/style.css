@@ -1001,8 +1001,10 @@ strong { color: var(--ink); font-weight: 600; }
 .person-body h3 { font-size: 1.15rem; margin-bottom: .12em; }
 .person-body .role { font-size: .9rem; font-weight: 600; color: var(--blue-dk); margin-bottom: 1.15em; }
 /* Karten ohne Rollenzeile (Thomas, Karin): der Name sitzt sonst direkt auf dem
-   ersten Stichpunkt - die fehlende Rolle als Abstand nachbilden. */
-.person-body h3 + .checklist { margin-top: .9em; }
+   ersten Stichpunkt. Der Abstand entspricht jetzt dem, was Rollenzeile plus
+   ihr Abstand auf den anderen Karten einnehmen - die Listen starten also
+   ueber alle Karten hinweg auf gleicher Hoehe. */
+.person-body h3 + .checklist { margin-top: 1.9em; }
 
 /* ==========================================================================
    Partner cards (Engagement)

@@ -475,7 +475,7 @@ strong { color: var(--ink); font-weight: 600; }
 }
 .hero h1 { margin-bottom: .3em; }
 .hero h1 .accent { color: var(--blue-dk); }
-.hero .lede { font-size: clamp(1.125rem, 1rem + .5vw, 1.375rem); margin-bottom: 1.6em; }
+.hero .lede { font-size: clamp(1.125rem, 1rem + .5vw, 1.375rem); margin-bottom: 1.15em; }
 .hero .kicker {
   display: inline-flex;
   align-items: center;
@@ -640,10 +640,13 @@ strong { color: var(--ink); font-weight: 600; }
   width: max-content;
   animation: logo-river 62s linear infinite;
 }
-/* The list is duplicated once, so -50% is exactly one full set. */
-@keyframes logo-river { to { transform: translateX(-50%); } }
-.logo-river:hover .logo-river-track,
-.logo-river:focus-within .logo-river-track { animation-play-state: paused; }
+/* The list is duplicated once, so -50% is exactly one full set. Das Band
+   laeuft von -50% auf 0, also immer nach rechts, und es laeuft auch beim
+   Hovern weiter - kein animation-play-state: paused. */
+@keyframes logo-river {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
 .logo-river-track li {
   flex: 0 0 auto;
   display: grid;

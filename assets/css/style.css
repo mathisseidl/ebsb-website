@@ -1217,7 +1217,9 @@ strong { color: var(--ink); font-weight: 600; }
   font-weight: 500;
   white-space: nowrap;
 }
-.map-ico { width: 18px; height: 18px; flex: 0 0 auto; }
+/* Beide Markenzeichen auf gleiche optische Hoehe, der Google-Pin ist
+   hochkant und darf sich seine Breite selbst nehmen. */
+.map-ico { width: auto; height: 18px; flex: 0 0 auto; }
 
 .legal-links { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border); font-size: .9375rem; }
 .legal-links ul { display: flex; flex-wrap: wrap; gap: 8px 22px; }

@@ -1207,9 +1207,8 @@ strong { color: var(--ink); font-weight: 600; }
 .map-choice[open] > summary::after { transform: translateY(1px) rotate(-135deg); }
 .map-choice > summary:hover,
 .map-choice[open] > summary { color: var(--blue-dk); }
-/* Beide Kartenlinks stehen nebeneinander und rutschen erst untereinander,
-   wenn die Spalte zu schmal wird. */
-.map-choice ul { display: flex; flex-wrap: wrap; gap: 9px 22px; margin-top: 11px; font-size: .9375rem; }
+/* Ein Kartenlink pro Zeile: Google Maps oben, Apple Maps darunter. */
+.map-choice ul { display: grid; justify-items: start; gap: 9px; margin-top: 11px; font-size: .9375rem; }
 .map-choice ul a {
   display: inline-flex;
   align-items: center;

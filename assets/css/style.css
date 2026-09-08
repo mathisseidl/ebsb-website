@@ -1184,6 +1184,32 @@ strong { color: var(--ink); font-weight: 600; }
 .contact-list a, .contact-list address { color: var(--ink); font-style: normal; font-weight: 500; }
 .contact-list address { line-height: 1.55; }
 
+/* Adresse als Aufklapper: ein Klick stellt Google Maps und Apple Maps zur Wahl,
+   statt eine der beiden Karten fuer den Besucher zu entscheiden. */
+.map-choice > summary {
+  display: inline-block;
+  list-style: none;
+  line-height: 1.55;
+  cursor: pointer;
+}
+.map-choice > summary::-webkit-details-marker { display: none; }
+.map-choice > summary::after {
+  content: "";
+  display: inline-block;
+  width: 6px; height: 6px;
+  margin-left: 9px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  opacity: .5;
+  transition: transform .18s ease;
+}
+.map-choice[open] > summary::after { transform: translateY(1px) rotate(-135deg); }
+.map-choice > summary:hover,
+.map-choice[open] > summary { color: var(--blue-dk); }
+.map-choice ul { display: grid; gap: 7px; margin-top: 11px; font-size: .9375rem; }
+.map-choice ul a { color: var(--blue-dk); font-weight: 500; }
+
 .legal-links { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border); font-size: .9375rem; }
 .legal-links ul { display: flex; flex-wrap: wrap; gap: 8px 22px; }
 

@@ -19,7 +19,7 @@
 <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="assets/css/fonts.css" />
-<link rel="stylesheet" href="assets/css/style.css?v=20260908b" />
+<link rel="stylesheet" href="assets/css/style.css?v=20260908c" />
 <script>document.documentElement.className+=" js";</script>
 </head>
 <body>
@@ -89,7 +89,17 @@
               </span>
               <div>
                 <span class="label">Adresse</span>
-                <address>Nibelungenstraße 18<br />82031 Grünwald</address>
+                <!-- Ein Klick auf die Adresse klappt die Kartenlinks auf. <details>
+                     kann das von sich aus, also braucht es dafuer kein JavaScript. -->
+                <address>
+                  <details class="map-choice">
+                    <summary>Nibelungenstraße 18<br />82031 Grünwald</summary>
+                    <ul>
+                      <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Nibelungenstra%C3%9Fe%2018%2C%2082031%20Gr%C3%BCnwald" target="_blank" rel="noopener noreferrer">In Google Maps öffnen</a></li>
+                      <li><a href="https://maps.apple.com/?q=Nibelungenstra%C3%9Fe%2018%2C%2082031%20Gr%C3%BCnwald" target="_blank" rel="noopener noreferrer">In Apple Maps öffnen</a></li>
+                    </ul>
+                  </details>
+                </address>
               </div>
             </li>
             <li>
@@ -228,6 +238,6 @@
   </div>
 </footer>
 
-<script src="assets/js/main.js?v=20260908b"></script>
+<script src="assets/js/main.js?v=20260908c"></script>
 </body>
 </html>

@@ -1207,8 +1207,18 @@ strong { color: var(--ink); font-weight: 600; }
 .map-choice[open] > summary::after { transform: translateY(1px) rotate(-135deg); }
 .map-choice > summary:hover,
 .map-choice[open] > summary { color: var(--blue-dk); }
-.map-choice ul { display: grid; gap: 7px; margin-top: 11px; font-size: .9375rem; }
-.map-choice ul a { color: var(--blue-dk); font-weight: 500; }
+/* Beide Kartenlinks stehen nebeneinander und rutschen erst untereinander,
+   wenn die Spalte zu schmal wird. */
+.map-choice ul { display: flex; flex-wrap: wrap; gap: 9px 22px; margin-top: 11px; font-size: .9375rem; }
+.map-choice ul a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--blue-dk);
+  font-weight: 500;
+  white-space: nowrap;
+}
+.map-ico { width: 18px; height: 18px; flex: 0 0 auto; }
 
 .legal-links { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border); font-size: .9375rem; }
 .legal-links ul { display: flex; flex-wrap: wrap; gap: 8px 22px; }

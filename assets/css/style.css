@@ -475,7 +475,9 @@ strong { color: var(--ink); font-weight: 600; }
 }
 .hero h1 { margin-bottom: .3em; }
 .hero h1 .accent { color: var(--blue-dk); }
-.hero .lede { font-size: clamp(1.125rem, 1rem + .5vw, 1.375rem); margin-bottom: 1.15em; }
+/* Kurzer Abstand nach unten, damit Checkliste und Buttons dicht unter der
+   Zeile "Ihre Energieberatung in Muenchen und Suedbayern" stehen. */
+.hero .lede { font-size: clamp(1.125rem, 1rem + .5vw, 1.375rem); margin-bottom: .6em; }
 .hero .kicker {
   display: inline-flex;
   align-items: center;

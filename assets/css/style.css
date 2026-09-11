@@ -344,9 +344,25 @@ strong { color: var(--ink); font-weight: 600; }
 .main-nav .nav-cta { display: none; }
 
 /* Dropdown (Home). Reines CSS: :hover fuer die Maus, :focus-within fuer die
-   Tastatur - deshalb braucht das Menue kein JavaScript. */
-.main-nav .has-sub { position: relative; }
-.main-nav .has-sub > a { display: flex; align-items: center; gap: 7px; }
+   Tastatur - deshalb braucht das Menue kein JavaScript. Der Pfeil-Button ist
+   bewusst ein eigenes, separates Element neben dem "Home"-Link: nur er (und
+   das aufgeklappte Untermenue selbst) loest das Hover-Aufklappen aus, nicht
+   der "Home"-Text - der bleibt ein normaler Link zur Startseite. */
+.main-nav .has-sub { position: relative; display: flex; align-items: stretch; }
+.main-nav .caret-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  margin: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+.main-nav .caret-btn:hover,
+.main-nav .caret-btn:focus-visible { background: var(--bg-alt); }
 .main-nav .caret {
   width: 6px; height: 6px;
   border-right: 1.6px solid currentColor;
@@ -354,8 +370,8 @@ strong { color: var(--ink); font-weight: 600; }
   transform: translateY(-2px) rotate(45deg);
   transition: transform .18s ease;
 }
-.main-nav .has-sub:hover > a .caret,
-.main-nav .has-sub:focus-within > a .caret { transform: translateY(1px) rotate(225deg); }
+.main-nav .caret-btn:hover .caret,
+.main-nav .has-sub:focus-within .caret { transform: translateY(1px) rotate(225deg); }
 .main-nav .subnav {
   position: absolute;
   top: 100%; left: 0;
@@ -374,7 +390,9 @@ strong { color: var(--ink); font-weight: 600; }
   transform: translateY(-6px);
   transition: opacity .16s ease, transform .16s ease, visibility .16s;
 }
-.main-nav .has-sub:hover > .subnav,
+.main-nav .caret-btn:hover ~ .subnav,
+.main-nav .caret-btn:focus-visible ~ .subnav,
+.main-nav .subnav:hover,
 .main-nav .has-sub:focus-within > .subnav {
   opacity: 1;
   visibility: visible;
@@ -430,7 +448,8 @@ strong { color: var(--ink); font-weight: 600; }
   /* Die aktive Seite bekommt am Telefon keine Flaeche - der blaue Block war
      schwerer als der Rest des schlanken Panels. */
   .main-nav a[aria-current="page"] { background: none; font-weight: 700; }
-  .main-nav .caret { display: none; }
+  .main-nav .has-sub { flex-direction: column; align-items: stretch; }
+  .main-nav .caret-btn { display: none; }
   /* Untermenue offen ausgeklappt, aber knapper gesetzt als die Hauptpunkte:
      kleinere Schrift und weniger Polsterung, damit die zwei Zeilen das Panel
      nicht wieder in die Laenge ziehen. */

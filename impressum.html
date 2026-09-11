@@ -13,7 +13,7 @@
 <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="assets/css/fonts.css" />
-<link rel="stylesheet" href="assets/css/style.css?v=20260908f" />
+<link rel="stylesheet" href="assets/css/style.css?v=20260911" />
 <script>document.documentElement.className+=" js";</script>
 </head>
 <body>
@@ -32,8 +32,11 @@
     <nav class="main-nav" id="primary-nav" aria-label="Hauptnavigation">
       <ul>
         <li class="has-sub">
-          <a href="/">Home <span class="caret" aria-hidden="true"></span></a>
-          <ul class="subnav">
+          <a href="/">Home</a>
+          <button type="button" class="caret-btn" aria-haspopup="true" aria-expanded="false" aria-controls="home-subnav" aria-label="Untermenü „Home“ anzeigen">
+            <span class="caret" aria-hidden="true"></span>
+          </button>
+          <ul class="subnav" id="home-subnav">
             <li><a href="/">Startseite</a></li>
             <li><a href="/#service">Privatkunden</a></li>
           </ul>

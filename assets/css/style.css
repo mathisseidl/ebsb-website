@@ -353,7 +353,10 @@ strong { color: var(--ink); font-weight: 600; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0 12px;
+  /* Gleicher horizontaler Platz wie frueher der "gap: 7px" vor dem Pfeil im
+     Link - so bleiben Pfeil, Untermenue und alle folgenden Nav-Punkte exakt
+     an derselben Stelle wie vor der Trennung von Link und Button. */
+  padding: 0 0 0 7px;
   margin: 0;
   border: 0;
   background: none;

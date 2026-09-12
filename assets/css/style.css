@@ -30,7 +30,7 @@
   --radius-sm: 10px;
   --radius-pill: 999px;
 
-  --header-h: 76px;
+  --header-h: 106px;
   --max-w: 1200px;
   --measure: 68ch;
 
@@ -301,8 +301,8 @@ strong { color: var(--ink); font-weight: 600; }
 
 .brand { display: flex; align-items: center; gap: 11px; flex-shrink: 0; }
 .brand:hover { text-decoration: none; }
-.brand img.brand-mark { width: 42px; }
-.brand img.brand-word { width: 74px; }
+.brand img.brand-mark { width: 105px; }
+.brand img.brand-word { width: 185px; }
 .brand-sub {
   display: none;
   padding-left: 12px;

@@ -523,13 +523,6 @@ strong { color: var(--ink); font-weight: 600; }
 }
 
 .hero-figure { position: relative; display: grid; place-items: center; }
-.hero-figure::before {
-  content: "";
-  position: absolute;
-  inset: -8% 2%;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,255,255,.92) 0%, rgba(255,255,255,0) 68%);
-}
 .hero-figure img {
   position: relative;
   width: min(100%, 400px);
